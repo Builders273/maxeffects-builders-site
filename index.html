@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaxEffects Builders — Licensed General Contractor &amp; Property Inspections</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0B3B2E;
+    --green-deep:#082C22;
+    --gold:#C8A85A;
+    --gold-bright:#DDC17E;
+    --cream:#F5F1E7;
+    --black:#2B2B2B;
+    --gray:#6D6E71;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Montserrat',sans-serif;
+    color:var(--black);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  h1,h2,h3{font-family:'Playfair Display',serif; font-weight:700; line-height:1.05;}
+  .eyebrow{
+    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    font-weight:700; color:var(--gold);
+  }
+  .eyebrow.on-light{ color:#8a7539; }
+
+  /* ---------- Focus states (a11y) ---------- */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--green);
+    border-bottom:1px solid rgba(200,168,90,0.25);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo-lockup{ display:flex; align-items:center; gap:12px; }
+  .logo-mark{ width:34px; height:34px; flex-shrink:0; }
+  .logo-text{
+    font-family:'Playfair Display',serif; font-weight:700;
+    color:var(--white); font-size:17px; letter-spacing:0.02em;
+  }
+  .logo-text span{ color:var(--gold); }
+  .logo-sub{
+    font-size:9px; letter-spacing:0.16em; text-transform:uppercase;
+    color:rgba(245,241,231,0.55); margin-top:2px;
+  }
+  nav.links{ display:flex; align-items:center; gap:32px; }
+  nav.links a{
+    color:rgba(245,241,231,0.85); font-size:13px; font-weight:600;
+    letter-spacing:0.03em;
+  }
+  nav.links a:hover{ color:var(--gold-bright); }
+  .btn-nav-cta{
+    background:var(--gold); color:var(--green-deep);
+    padding:10px 20px; border-radius:2px; font-size:12.5px; font-weight:700;
+    letter-spacing:0.04em; border:1px solid var(--gold);
+    transition:background 0.15s ease, transform 0.15s ease;
+  }
+  .btn-nav-cta:hover{ background:var(--gold-bright); transform:translateY(-1px); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--white); font-size:24px; }
+  @media (max-width:900px){
+    nav.links{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(200,168,90,0.14), transparent 60%),
+      linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+    padding:88px 0 96px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(245,241,231,0.035) 0px, rgba(245,241,231,0.035) 1px, transparent 1px, transparent 64px),
+      repeating-linear-gradient(90deg, rgba(245,241,231,0.035) 0px, rgba(245,241,231,0.035) 1px, transparent 1px, transparent 64px);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; gap:48px; } }
+
+  .hero h1{
+    font-size:clamp(38px,5.2vw,64px);
+    color:var(--white);
+    margin:14px 0 6px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--gold-bright); }
+  .hero-since{
+    font-size:15px; color:rgba(245,241,231,0.6); font-weight:500;
+    margin-bottom:22px; letter-spacing:0.02em;
+  }
+  .hero-lede{
+    font-size:16.5px; line-height:1.65; color:rgba(245,241,231,0.85);
+    max-width:480px; margin-bottom:34px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px; }
+  .btn-primary{
+    background:var(--gold); color:var(--green-deep);
+    padding:15px 28px; font-size:13.5px; font-weight:700; letter-spacing:0.04em;
+    border-radius:2px; border:1px solid var(--gold);
+    transition:background 0.15s ease, transform 0.15s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ background:var(--gold-bright); transform:translateY(-1px); }
+  .btn-ghost{
+    background:transparent; color:var(--white);
+    padding:15px 28px; font-size:13.5px; font-weight:700; letter-spacing:0.04em;
+    border-radius:2px; border:1px solid rgba(245,241,231,0.35);
+    transition:border-color 0.15s ease, background 0.15s ease;
+    display:inline-block;
+  }
+  .btn-ghost:hover{ border-color:var(--gold); background:rgba(200,168,90,0.08); }
+
+  .hero-licenses{
+    display:flex; gap:22px; flex-wrap:wrap;
+    padding-top:24px; border-top:1px solid rgba(245,241,231,0.14);
+  }
+  .lic-item{ font-size:11px; color:rgba(245,241,231,0.55); letter-spacing:0.03em; }
+  .lic-item b{ color:rgba(245,241,231,0.9); font-family:monospace; font-size:11.5px; display:block; letter-spacing:0.04em; }
+
+  /* Seal signature element */
+  .seal-wrap{ display:flex; justify-content:center; position:relative; }
+  .seal{
+    width:280px; height:280px;
+    animation: seal-rotate 46s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .seal{ animation:none; } }
+  .seal-center{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+  }
+  .seal-center .house{ width:54px; height:54px; margin-bottom:8px; }
+  .seal-center .est{
+    font-family:'Playfair Display',serif; font-weight:700; font-size:13px;
+    color:var(--gold-bright); letter-spacing:0.06em;
+  }
+  @keyframes seal-rotate{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding:96px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(28px,3.4vw,40px); color:var(--green); margin-top:12px; }
+  .section-head p{ font-size:15.5px; color:var(--gray); line-height:1.65; margin-top:14px; }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+    background:#ded6bd; border:1px solid #ded6bd;
+  }
+  @media (max-width:760px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-card{
+    background:var(--cream); padding:40px 36px;
+    position:relative; transition:background 0.2s ease;
+  }
+  .service-card:hover{ background:#efe9d8; }
+  .svc-top{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:22px; }
+  .svc-num{ font-family:'Playfair Display',serif; font-size:13px; color:var(--gold); font-weight:700; letter-spacing:0.06em; }
+  .svc-badge{ width:34px; height:34px; flex-shrink:0; }
+  .service-card h3{ font-size:21px; color:var(--green); margin-bottom:10px; }
+  .service-card p{ font-size:14px; line-height:1.65; color:var(--gray); margin-bottom:16px; }
+  .svc-for{
+    font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
+    color:#8a7539; font-weight:700;
+    border-top:1px solid #ded6bd; padding-top:14px;
+  }
+  .svc-for span{ display:block; font-size:12.5px; text-transform:none; letter-spacing:0.01em; color:var(--black); font-weight:500; margin-top:4px; }
+
+  /* ---------- CREDENTIALS BAND ---------- */
+  .credentials{
+    background:var(--green); color:var(--white);
+    padding:64px 0;
+  }
+  .cred-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:40px;
+  }
+  @media (max-width:760px){ .cred-grid{ grid-template-columns:repeat(2,1fr); gap:36px;} }
+  .cred-item{ text-align:center; }
+  .cred-num{
+    font-family:'Playfair Display',serif; font-weight:700; font-size:38px; color:var(--gold-bright);
+  }
+  .cred-label{ font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(245,241,231,0.65); margin-top:8px; }
+  .cred-license-strip{
+    margin-top:48px; padding-top:32px; border-top:1px solid rgba(245,241,231,0.14);
+    display:flex; justify-content:center; gap:36px; flex-wrap:wrap;
+  }
+  .cred-license-strip div{ text-align:center; }
+  .cred-license-strip b{ display:block; font-family:monospace; font-size:14px; letter-spacing:0.03em; color:var(--gold-bright); }
+  .cred-license-strip span{ font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(245,241,231,0.55); }
+
+  /* ---------- SERVICE AREA ---------- */
+  .area-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+  }
+  @media (max-width:800px){ .area-grid{ grid-template-columns:1fr; gap:40px; } }
+  .county-list{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+    list-style:none; margin-top:22px;
+  }
+  .county-list li{
+    font-size:14px; color:var(--black); padding:10px 0; border-bottom:1px solid #ded6bd;
+    display:flex; align-items:center; gap:10px;
+  }
+  .county-list li svg{ width:14px; height:14px; flex-shrink:0; color:var(--gold); }
+  .area-map{
+    background:var(--white); border:1px solid #ded6bd; border-radius:4px;
+    padding:36px; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ---------- QUOTE FORM ---------- */
+  .quote-section{ background:var(--green); padding:96px 0; position:relative; overflow:hidden; }
+  .quote-section::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(ellipse 700px 400px at 10% 110%, rgba(200,168,90,0.12), transparent 60%);
+  }
+  .quote-grid{ position:relative; z-index:1; display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:flex-start; }
+  @media (max-width:900px){ .quote-grid{ grid-template-columns:1fr; gap:44px; } }
+  .quote-left h2{ color:var(--white); font-size:clamp(28px,3.4vw,38px); margin-top:12px; }
+  .quote-left p{ color:rgba(245,241,231,0.78); font-size:15px; line-height:1.7; margin-top:16px; max-width:420px; }
+  .quote-perks{ margin-top:32px; display:flex; flex-direction:column; gap:14px; }
+  .quote-perk{ display:flex; gap:12px; align-items:flex-start; font-size:13.5px; color:rgba(245,241,231,0.85); }
+  .quote-perk svg{ width:18px; height:18px; flex-shrink:0; color:var(--gold-bright); margin-top:1px; }
+
+  form.quote-form{
+    background:var(--cream); border-radius:4px; padding:40px;
+    border-top:4px solid var(--gold);
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  @media (max-width:520px){ .form-row{ grid-template-columns:1fr; } }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .field label{ font-size:11.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--green); }
+  .field input, .field select, .field textarea{
+    font-family:'Montserrat',sans-serif; font-size:14px; padding:12px 14px;
+    border:1px solid #ccc3a4; border-radius:2px; background:var(--white); color:var(--black);
+  }
+  .field textarea{ resize:vertical; min-height:80px; }
+  .btn-submit{
+    width:100%; background:var(--green); color:var(--white);
+    padding:16px; font-size:14px; font-weight:700; letter-spacing:0.05em;
+    border-radius:2px; border:1px solid var(--green); margin-top:6px;
+    transition:background 0.15s ease;
+  }
+  .btn-submit:hover{ background:var(--green-deep); }
+  .form-note{ font-size:11.5px; color:var(--gray); margin-top:14px; text-align:center; }
+  .form-success{
+    display:none; text-align:center; padding:40px 20px;
+  }
+  .form-success.show{ display:block; }
+  .form-success svg{ width:44px; height:44px; color:var(--gold); margin:0 auto 16px; }
+  .form-success h3{ color:var(--green); font-size:22px; margin-bottom:8px; }
+  .form-success p{ color:var(--gray); font-size:14px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--green-deep); color:rgba(245,241,231,0.7); padding:56px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:48px; margin-bottom:40px; }
+  @media (max-width:700px){ .footer-grid{ grid-template-columns:1fr; gap:32px; } }
+  .footer-logo{ font-family:'Playfair Display',serif; font-weight:700; color:var(--white); font-size:19px; margin-bottom:10px; }
+  .footer-logo span{ color:var(--gold); }
+  .footer-tagline{ font-size:13px; color:rgba(245,241,231,0.5); line-height:1.6; max-width:280px; }
+  .footer-col h4{ font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:16px; font-weight:700; }
+  .footer-col a, .footer-col p{ display:block; font-size:13.5px; color:rgba(245,241,231,0.75); margin-bottom:10px; line-height:1.5; }
+  .footer-col a:hover{ color:var(--gold-bright); }
+  .footer-bottom{
+    border-top:1px solid rgba(245,241,231,0.12); padding-top:24px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:11.5px; color:rgba(245,241,231,0.4);
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo-lockup">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#C8A85A" stroke-width="1.4"/>
+        <path d="M11 22L20 13L29 22" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 21V27H26V21" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.5 27V23H22.5V27" stroke="#C8A85A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div class="logo-text">MAX<span>EFFECTS</span> BUILDERS</div>
+        <div class="logo-sub">Building · Inspecting · Protecting</div>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#area">Service Area</a>
+      <a href="#quote" class="btn-nav-cta">Request Inspection</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Licensed General Contractor · Certified Inspector</div>
+      <h1>Building. Inspecting.<br><em>Protecting.</em></h1>
+      <div class="hero-since">Serving Florida property owners since 1982.</div>
+      <p class="hero-lede">MaxEffects Builders is a licensed general contracting and inspection company covering HQS (Housing Quality Standard), 4 Point, and Wind Mitigation inspections — trusted by homeowners, real estate agents, and property managers alike.</p>
+      <div class="hero-ctas">
+        <a href="#quote" class="btn-primary">Request a Quote</a>
+        <a href="#services" class="btn-ghost">View Services</a>
+      </div>
+      <div class="hero-licenses">
+        <div class="lic-item">General Contractor<b>CGC1519595</b></div>
+        <div class="lic-item">General Contractor<b>CGC1541239</b></div>
+        <div class="lic-item">Home Inspector<b>HI4788</b></div>
+        <div class="lic-item">Miami-Dade County<b>Project Management Certified</b></div>
+      </div>
+    </div>
+    <div class="seal-wrap">
+      <svg class="seal" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="sealCircle" d="M 140,140 m -108,0 a 108,108 0 1,1 216,0 a 108,108 0 1,1 -216,0" />
+        </defs>
+        <circle cx="140" cy="140" r="132" fill="none" stroke="rgba(200,168,90,0.28)" stroke-width="1"/>
+        <circle cx="140" cy="140" r="122" fill="none" stroke="rgba(200,168,90,0.5)" stroke-width="1.2"/>
+        <circle cx="140" cy="140" r="94" fill="none" stroke="rgba(200,168,90,0.5)" stroke-width="1.2"/>
+        <text font-family="Montserrat, sans-serif" font-size="12.5" font-weight="700" letter-spacing="4" fill="#DDC17E">
+          <textPath href="#sealCircle" startOffset="0%">LICENSED &#8226; INSPECTED &#8226; CERTIFIED &#8226;</textPath>
+        </text>
+        <text font-family="Montserrat, sans-serif" font-size="12.5" font-weight="700" letter-spacing="4" fill="#DDC17E">
+          <textPath href="#sealCircle" startOffset="50%">EST. 1982 &#8226; FLORIDA &#8226;</textPath>
+        </text>
+      </svg>
+      <div class="seal-center">
+        <svg class="house" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 26L27 10L46 26" stroke="#DDC17E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 24V42H41V24" stroke="#DDC17E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 42V31H32V42" stroke="#DDC17E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 20L25 25L34 15" stroke="#C8A85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="est">SINCE 1982</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow on-light">What We Do</div>
+      <h2>Four services. One standard of scrutiny.</h2>
+      <p>Whether you're building, buying, insuring, or managing property, we bring the same licensed, methodical eye to every job.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="svc-top">
+          <span class="svc-num">01</span>
+          <svg class="svc-badge" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#C8A85A" stroke-width="1.3"/><path d="M10 18L15 23L24 12" stroke="#C8A85A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>General Contracting</h3>
+        <p>Full-scope construction, renovation, and remodeling work handled start to finish by a licensed GC team — from permitting through final walkthrough.</p>
+        <div class="svc-for">Built for<span>Homeowners &amp; property owners planning new construction or major renovation</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="svc-top">
+          <span class="svc-num">02</span>
+          <svg class="svc-badge" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#C8A85A" stroke-width="1.3"/><path d="M9 17H25M9 12H25M9 22H19" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Housing Quality Standard (HQS) Inspections</h3>
+        <p>Housing Quality Standard (HQS) inspections verify a unit meets HUD requirements for safety, sanitation, and habitability.</p>
+        <div class="svc-for">Built for<span>Property managers and landlords maintaining Section 8 compliance</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="svc-top">
+          <span class="svc-num">03</span>
+          <svg class="svc-badge" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#C8A85A" stroke-width="1.3"/><path d="M17 9V17L22 20" stroke="#C8A85A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>4 Point Inspections</h3>
+        <p>A focused evaluation of roof, electrical, plumbing, and HVAC systems — the four points insurers require for homes over 25–30 years old.</p>
+        <div class="svc-for">Built for<span>Homeowners renewing or securing insurance on an older property</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="svc-top">
+          <span class="svc-num">04</span>
+          <svg class="svc-badge" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#C8A85A" stroke-width="1.3"/><path d="M8 17C8 17 11 12 17 12C23 12 26 17 26 17C26 17 23 22 17 22C11 22 8 17 8 17Z" stroke="#C8A85A" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Wind Mitigation Inspections</h3>
+        <p>Documents wind-resistant features — roof shape, bracing, opening protection — that can qualify a home for significant insurance discounts.</p>
+        <div class="svc-for">Built for<span>Homeowners and agents looking to lower windstorm premiums</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREDENTIALS ================= -->
+<section class="credentials" id="credentials">
+  <div class="wrap">
+    <div class="cred-grid">
+      <div class="cred-item">
+        <div class="cred-num">40+</div>
+        <div class="cred-label">Years in business</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">4</div>
+        <div class="cred-label">Licenses &amp; certifications</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">4</div>
+        <div class="cred-label">Inspection specialties</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">48hr</div>
+        <div class="cred-label">Typical report turnaround</div>
+      </div>
+    </div>
+    <div class="cred-license-strip">
+      <div><b>CGC1519595</b><span>General Contractor</span></div>
+      <div><b>CGC1541239</b><span>General Contractor</span></div>
+      <div><b>HI4788</b><span>Home Inspector</span></div>
+      <div><b>Miami-Dade Cert.</b><span>Project Management</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA ================= -->
+<section class="section" id="area">
+  <div class="wrap">
+    <div class="area-grid">
+      <div>
+        <div class="eyebrow on-light">Where We Work</div>
+        <h2 style="font-size:clamp(26px,3vw,34px); color:var(--green); margin-top:12px;">Covering Florida's high-demand markets</h2>
+        <p style="color:var(--gray); font-size:15px; line-height:1.65; margin-top:14px;">Based in South Florida, our licensed inspectors and contracting crews serve homeowners, agents, and property managers throughout the following counties.</p>
+        <ul class="county-list">
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4V8C14 11.5 11.5 14.2 8 15C4.5 14.2 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.3"/></svg>Miami-Dade County</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4V8C14 11.5 11.5 14.2 8 15C4.5 14.2 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.3"/></svg>Broward County</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4V8C14 11.5 11.5 14.2 8 15C4.5 14.2 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.3"/></svg>Palm Beach County</li>
+          <li><svg viewBox="0 0 16 16" fill="none"><path d="M8 1L14 4V8C14 11.5 11.5 14.2 8 15C4.5 14.2 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.3"/></svg>Monroe County</li>
+        </ul>
+      </div>
+      <div class="area-map">
+        <svg viewBox="0 0 320 260" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 20 C90 15 140 25 170 40 C200 55 230 60 250 85 C265 105 260 130 245 150 C230 170 220 190 200 210 C185 225 165 235 145 230 C120 224 110 205 95 185 C80 165 60 155 50 135 C40 115 45 90 50 65 C53 48 55 30 60 20 Z"
+            fill="rgba(11,59,46,0.06)" stroke="#0B3B2E" stroke-width="1.4"/>
+          <circle cx="150" cy="120" r="4" fill="#C8A85A"/>
+          <circle cx="185" cy="150" r="4" fill="#C8A85A"/>
+          <circle cx="120" cy="160" r="4" fill="#C8A85A"/>
+          <circle cx="90" cy="100" r="4" fill="#C8A85A"/>
+          <text x="160" y="245" font-family="Montserrat, sans-serif" font-size="10.5" letter-spacing="1.5" fill="#6D6E71" text-anchor="middle">SOUTH FLORIDA SERVICE FOOTPRINT</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE FORM ================= -->
+<section class="quote-section" id="quote">
+  <div class="wrap quote-grid">
+    <div class="quote-left">
+      <div class="eyebrow">Get Started</div>
+      <h2>Request your inspection.</h2>
+      <p>Tell us what you need and where the property is. A licensed inspector will follow up to confirm scope, timing, and pricing — usually within one business day.</p>
+      <div class="quote-perks">
+        <div class="quote-perk">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M9 1L17 4.5V9C17 13 13.5 16.2 9 17C4.5 16.2 1 13 1 9V4.5L9 1Z" stroke="currentColor" stroke-width="1.3"/></svg>
+          Licensed &amp; insured — CGC1519595 · CGC1541239 · HI4788 · Miami-Dade Project Management Certified
+        </div>
+        <div class="quote-perk">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M9 1L17 4.5V9C17 13 13.5 16.2 9 17C4.5 16.2 1 13 1 9V4.5L9 1Z" stroke="currentColor" stroke-width="1.3"/></svg>
+          Reports delivered within 48 hours
+        </div>
+        <div class="quote-perk">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M9 1L17 4.5V9C17 13 13.5 16.2 9 17C4.5 16.2 1 13 1 9V4.5L9 1Z" stroke="currentColor" stroke-width="1.3"/></svg>
+          40+ years serving South Florida
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form class="quote-form" id="quoteForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="itype">Inspection type</label>
+            <select id="itype" name="itype" required>
+              <option value="" disabled selected>Select one</option>
+              <option>General Contracting</option>
+              <option>HQS Inspection</option>
+              <option>4 Point Inspection</option>
+              <option>Wind Mitigation Inspection</option>
+              <option>Not sure — advise me</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pdate">Preferred date</label>
+            <input type="date" id="pdate" name="pdate">
+          </div>
+        </div>
+        <div class="field">
+          <label for="address">Property address</label>
+          <input type="text" id="address" name="address" required placeholder="Street, city, ZIP">
+        </div>
+        <div class="field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="Anything we should know before we call?"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Request a Quote</button>
+        <div class="form-note">No cost to request. A licensed inspector will contact you directly.</div>
+      </form>
+
+      <div class="form-success" id="formSuccess" style="background:var(--cream); border-radius:4px; border-top:4px solid var(--gold);">
+        <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.5"/><path d="M13 22L19 28L31 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Request received</h3>
+        <p>Thanks — a licensed inspector will reach out shortly to confirm the details.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">MAX<span>EFFECTS</span> BUILDERS</div>
+        <div class="footer-tagline">Building. Inspecting. Protecting. — Licensed general contracting and inspection services serving South Florida since 1982.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">General Contracting</a>
+        <a href="#services">Housing Quality Standard (HQS) Inspections</a>
+        <a href="#services">4 Point Inspections</a>
+        <a href="#services">Wind Mitigation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>(305) 519-8362</p>
+        <p>Maxeffectsbuilders@yahoo.com</p>
+        <p>South Florida — Miami-Dade, Broward, Palm Beach, Monroe</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 MaxEffects Builders. All rights reserved.</span>
+      <span>CGC1519595 &middot; CGC1541239 &middot; HI4788 &middot; Miami-Dade Project Management Certified</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+</script>
+
+</body>
+</html>
