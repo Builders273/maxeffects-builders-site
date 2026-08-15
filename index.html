@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MaxEffects Builders — Licensed General Contractor &amp; Property Inspections</title>
+<meta name="description" content="Licensed general contractor and property inspection company serving South Florida since 1982. Housing Quality Standard (HQS), 4 Point, and Wind Mitigation inspections across Miami-Dade, Broward, Palm Beach, and Monroe counties.">
+<link rel="canonical" href="https://maxeffectsbuilders.com">
+<meta name="theme-color" content="#0B3B2E">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MaxEffects Builders">
+<meta property="og:title" content="MaxEffects Builders — Licensed General Contractor &amp; Property Inspections">
+<meta property="og:description" content="Licensed GC and inspection company serving South Florida since 1982 — General Contracting, HQS, 4 Point, and Wind Mitigation inspections.">
+<meta property="og:url" content="https://maxeffectsbuilders.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MaxEffects Builders — Licensed General Contractor &amp; Property Inspections">
+<meta name="twitter:description" content="Licensed GC and inspection company serving South Florida since 1982 — General Contracting, HQS, 4 Point, and Wind Mitigation inspections.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -510,7 +525,12 @@
     </div>
 
     <div>
-      <form class="quote-form" id="quoteForm">
+      <form class="quote-form" id="quoteForm" action="https://formsubmit.co/Maxeffectsbuilders@yahoo.com" method="POST">
+        <input type="hidden" name="_subject" value="New Inspection Quote Request — MaxEffects Builders">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://maxeffectsbuilders.com/?sent=true#quote">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-row">
           <div class="field">
             <label for="fname">Full name</label>
@@ -593,11 +613,11 @@
 </footer>
 
 <script>
-  document.getElementById('quoteForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    this.style.display = 'none';
+  // Show the success panel if we've been redirected back after a real submission
+  if (new URLSearchParams(window.location.search).get('sent') === 'true') {
+    document.getElementById('quoteForm').style.display = 'none';
     document.getElementById('formSuccess').classList.add('show');
-  });
+  }
 </script>
 
 </body>
