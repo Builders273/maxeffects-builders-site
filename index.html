@@ -197,6 +197,7 @@
     background:var(--cream); padding:40px 36px;
     position:relative; transition:background 0.2s ease;
   }
+  .service-card:last-child:nth-child(odd){ grid-column: 1 / -1; }
   .service-card:hover{ background:#efe9d8; }
   .svc-top{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:22px; }
   .svc-num{ font-family:'Playfair Display',serif; font-size:13px; color:var(--gold); font-weight:700; letter-spacing:0.06em; }
@@ -319,9 +320,7 @@
     <a href="#top" class="logo-lockup">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="20" cy="20" r="19" stroke="#C8A85A" stroke-width="1.4"/>
-        <path d="M11 22L20 13L29 22" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M14 21V27H26V21" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M17.5 27V23H22.5V27" stroke="#C8A85A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="20" y="26" font-family="Playfair Display, serif" font-weight="700" font-size="16" fill="#C8A85A" text-anchor="middle" letter-spacing="0.5">MB</text>
       </svg>
       <div>
         <div class="logo-text">MAX<span>EFFECTS</span> BUILDERS</div>
@@ -345,7 +344,7 @@
       <div class="eyebrow">Licensed General Contractor · Certified Inspector</div>
       <h1>Building. Inspecting.<br><em>Protecting.</em></h1>
       <div class="hero-since">Serving Florida property owners since 1982.</div>
-      <p class="hero-lede">MaxEffects Builders is a licensed general contracting and inspection company covering HQS (Housing Quality Standard), 4 Point, and Wind Mitigation inspections — trusted by homeowners, real estate agents, and property managers alike.</p>
+      <p class="hero-lede">MaxEffects Builders is a licensed General Construction and inspection company; covering (HQS) Housing Quality Standard, Project Management, 4 Point, and Wind Mitigation inspections — trusted by homeowners, real estate agents, and property managers alike.</p>
       <div class="hero-ctas">
         <a href="#quote" class="btn-primary">Request a Quote</a>
         <a href="#services" class="btn-ghost">View Services</a>
@@ -374,10 +373,8 @@
       </svg>
       <div class="seal-center">
         <svg class="house" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 26L27 10L46 26" stroke="#DDC17E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M13 24V42H41V24" stroke="#DDC17E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M22 42V31H32V42" stroke="#DDC17E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M20 20L25 25L34 15" stroke="#C8A85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="27" cy="27" r="25" stroke="#C8A85A" stroke-width="1.6"/>
+          <text x="27" y="35" font-family="Playfair Display, serif" font-weight="700" font-size="22" fill="#DDC17E" text-anchor="middle" letter-spacing="0.5">MB</text>
         </svg>
         <div class="est">SINCE 1982</div>
       </div>
@@ -413,7 +410,7 @@
           <svg class="svc-badge" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#C8A85A" stroke-width="1.3"/><path d="M9 17H25M9 12H25M9 22H19" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h3>Housing Quality Standard (HQS) Inspections</h3>
-        <p>Housing Quality Standard (HQS) inspections verify a unit meets HUD requirements for safety, sanitation, and habitability.</p>
+        <p>Housing Quality Standard (HQS) inspections verify that a unit meets (HUD) Housing and Urban Development requirements for being safe, sound, sanitary, and habitable.</p>
         <div class="svc-for">Built for<span>Property managers and landlords maintaining Section 8 compliance</span></div>
       </div>
 
@@ -437,6 +434,16 @@
         <div class="svc-for">Built for<span>Homeowners and agents looking to lower windstorm premiums</span></div>
       </div>
 
+      <div class="service-card">
+        <div class="svc-top">
+          <span class="svc-num">05</span>
+          <svg class="svc-badge" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#C8A85A" stroke-width="1.3"/><path d="M11 21H23M11 17H23M11 13H18" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round"/><path d="M20 24L23 27L27 22" stroke="#C8A85A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Construction Project Management</h3>
+        <p>Hands-on oversight of budgets, schedules, subcontractors, and permitting — keeping your build on track from groundbreaking to final sign-off, backed by our Miami-Dade Project Management Certification.</p>
+        <div class="svc-for">Built for<span>Owners and developers who need a licensed hand managing the full build</span></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -454,8 +461,8 @@
         <div class="cred-label">Licenses &amp; certifications</div>
       </div>
       <div class="cred-item">
-        <div class="cred-num">4</div>
-        <div class="cred-label">Inspection specialties</div>
+        <div class="cred-num">5</div>
+        <div class="cred-label">Service specialties</div>
       </div>
       <div class="cred-item">
         <div class="cred-num">48hr</div>
@@ -507,7 +514,7 @@
     <div class="quote-left">
       <div class="eyebrow">Get Started</div>
       <h2>Request your inspection.</h2>
-      <p>Tell us what you need and where the property is. A licensed inspector will follow up to confirm scope, timing, and pricing — usually within one business day.</p>
+      <p>Tell us your need and where the property is located. A licensed inspector shall follow up to confirm, scope, time and pricing — usually within one business day.</p>
       <div class="quote-perks">
         <div class="quote-perk">
           <svg viewBox="0 0 18 18" fill="none"><path d="M9 1L17 4.5V9C17 13 13.5 16.2 9 17C4.5 16.2 1 13 1 9V4.5L9 1Z" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -551,6 +558,7 @@
             <select id="itype" name="itype" required>
               <option value="" disabled selected>Select one</option>
               <option>General Contracting</option>
+              <option>Construction Project Management</option>
               <option>HQS Inspection</option>
               <option>4 Point Inspection</option>
               <option>Wind Mitigation Inspection</option>
@@ -594,6 +602,7 @@
       <div class="footer-col">
         <h4>Services</h4>
         <a href="#services">General Contracting</a>
+        <a href="#services">Construction Project Management</a>
         <a href="#services">Housing Quality Standard (HQS) Inspections</a>
         <a href="#services">4 Point Inspections</a>
         <a href="#services">Wind Mitigation</a>
